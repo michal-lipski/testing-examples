@@ -11,7 +11,7 @@ import static com.pik.contact.gui.selenium.setup.SeleniumDriver.getDriver;
 
 public abstract class BasePage<T> {
 
-    private static final String BASE_URL = "http://localhost:8080";
+    private static final String BASE_URL = "http://localhost:8090";
     private static final int LOAD_TIMEOUT = 30;
     private static final int REFRESH_RATE = 2;
 

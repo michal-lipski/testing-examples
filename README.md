@@ -3,8 +3,6 @@ springboot-angularjs-demo
 
 # BUILD
 
-npm install
-bower install
 mvn clean package
 
 # RUN
@@ -19,5 +17,7 @@ mvn spring-boot:run
 
 The application will be available on http://localhost:8080
 
-Login: admin
-Pass: admin123
+
+# TESTS
+
+* Unit

@@ -11,7 +11,7 @@ app.controller('ContactController', function ($scope, $rootScope, $location, $ht
 
     $scope.switchToMode = function (mode) {
         if (mode === '/edit') {
-            $scope.editMode = true;
+            $scope.editMode = false;
             $location.path($scope.editMode ? '/edit' : '/view');
 
         } else {

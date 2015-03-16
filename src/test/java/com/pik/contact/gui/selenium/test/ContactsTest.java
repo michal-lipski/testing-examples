@@ -1,14 +1,30 @@
 package com.pik.contact.gui.selenium.test;
 
+import com.pik.contact.Application;
 import com.pik.contact.gui.selenium.pageobjects.ContactsPage;
+import com.pik.contact.gui.selenium.setup.SeleniumDriver;
 import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.IntegrationTest;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import static com.pik.contact.gui.selenium.setup.SeleniumDriver.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)   // 1
+@SpringApplicationConfiguration(classes = Application.class)   // 2
+@WebAppConfiguration   // 3
+@IntegrationTest("server.port:8090")   // 4
 public class ContactsTest {
+
+    @Value("${local.server.port}")   // 6
+    int port;
 
     @AfterClass
     public static void tearDown() {
