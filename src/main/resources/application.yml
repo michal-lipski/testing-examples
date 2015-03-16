@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+flyway:
+  enabled: true
+
+security:
+  basic:
+    enabled: false
+
+management:
+  #port: 8081
+  address: 127.0.0.1
+  context-path: /manage
+  security:
+    enabled: true
+    role: SUPERUSER
+
+shell:
+  ssh:
+    enabled: true
+    port: 2222
+    auth: spring
+

@@ -1,0 +1,131 @@
+
+package com.pik.contact.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
+@JsonAutoDetect(fieldVisibility = ANY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity
+@Table(name = "CONTACTS")
+public class Contact {
+    @Id
+    @Column(name = "ID")
+    private String id;
+
+    @Column(name = "NAME")
+    @NotEmpty(message = "{validation.not-empty.message}")
+    private String name;
+
+    @Column(name = "FULL_NAME")
+    @NotEmpty(message = "{validation.not-empty.message}")
+    private String fullName;
+
+    @Column(name = "JOB_TITLE")
+    private String jobTitle;
+
+    @Column(name = "EMAIL")
+    @Email(message = "{validation.email.message}")
+    private String email;
+
+    @Column(name = "MOBILE")
+    @Pattern(regexp = "\\d{3,4} \\d{3} \\d{4}", message = "{validation.mobile.message}")
+    private String mobile;
+
+    @Column(name = "SKYPE_ID")
+    @Pattern(regexp = "[A-Za-z0-9_,\\-\\.]{6,32}", message = "{validation.skypeid.message}")
+    private String skypeId;
+    
+    public Contact() {
+    }
+    
+    public Contact(String name, String fullName) {
+        this.name = name;
+        this.fullName = fullName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getSkypeId() {
+        return skypeId;
+    }
+
+    public void setSkypeId(String skypeId) {
+        this.skypeId = skypeId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
+
+}
