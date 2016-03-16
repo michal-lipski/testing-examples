@@ -29,7 +29,6 @@ public class ContactServiceTest {
         contactService.deleteAllContacts();
     }
 
-
     @Test
     public void saves_new_contact() {
         //given
@@ -46,6 +45,7 @@ public class ContactServiceTest {
     public void finds_contacts_by_name() {
         Contact contact1 = contactService.saveContact(new Contact("John", "Doe", "Developer", "jdoe@company.com", "123 456 7890", "jdoe90"));
         Contact contact2 = contactService.saveContact(new Contact("Johnny", "Smith", "Developer", "smith@company.com", "123 456 7890", "smith90"));
+        Contact contact3 = contactService.saveContact(new Contact("Bob", "Smith", "Developer", "bob@company.com", "123 456 7890", "bobbb90"));
 
         List<Contact> contacts = contactService.searchContacts("John");
 

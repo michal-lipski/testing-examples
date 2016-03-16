@@ -1,5 +1,6 @@
-package com.pik.contact;
+package com.pik.contact.cucumber;
 
+import com.pik.contact.Application;
 import com.pik.contact.domain.Contact;
 import com.pik.contact.repository.ContactRepository;
 import cucumber.api.java.en.And;

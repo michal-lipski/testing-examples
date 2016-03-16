@@ -47,7 +47,7 @@ public class ContactControllerTest {
     }
 
     @Test
-    public void shouldSaveProduct() throws Exception {
+    public void should_save_contact() throws Exception {
         MvcResult result = mockMvc.perform(post("/rest/contacts").contentType(APPLICATION_JSON)
                 .content("{\"name\":\"John\",\"fullName\":\"Doe\"}"))
                 .andExpect(status().isCreated())
