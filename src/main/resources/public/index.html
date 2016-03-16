@@ -7,6 +7,7 @@
   <link href="styles/bootstrap-3.1.1.min.css" rel="stylesheet" />
   <link href="styles/app.css" rel="stylesheet" />
 </head>
+
 <body ng-controller="ContactController">
   <div class="navbar navbar-default navbar-fixed-top">
     <h4 class="col-xs-12">Contact List</h4>
@@ -21,7 +22,7 @@
         <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" />
         <table class="table">
           <tr>
-            <th colspan="2" class="contact-name" ng-class="{'has-error': contact.errors.name}">
+            <th colspan="2" class="contact-name" >
               <strong>
                   <input class="contact-first-name" required ng-model="contact.name" placeholder="Name" title="{{contact.errors.name}}" ng-readonly="!editMode" />
               </strong>
@@ -68,7 +69,6 @@
       </form>
       <input type="file" id="file{{contact.id}}" onchange="angular.element(this).scope().uploadPhoto(this.id)" accept="image/*" style="display: none;" />
     </div>
-    <button class="col-xs-12 btn btn-default btn-sm load-more" ng-show="hasMoreContacts" ng-click="searchContacts(page + 1)">More...</button>
   </div>
   <div class="loading" ng-show="isLoading"><span>Loading data...</span></div>
   

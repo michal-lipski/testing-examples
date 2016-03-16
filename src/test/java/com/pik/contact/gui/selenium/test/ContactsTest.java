@@ -17,13 +17,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import static com.pik.contact.gui.selenium.setup.SeleniumDriver.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)   // 1
-@SpringApplicationConfiguration(classes = Application.class)   // 2
-@WebAppConfiguration   // 3
-@IntegrationTest("server.port:8090")   // 4
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@WebAppConfiguration
+@IntegrationTest("server.port:8090")
 public class ContactsTest {
 
-    @Value("${local.server.port}")   // 6
+    @Value("${local.server.port}")
     int port;
 
     @AfterClass

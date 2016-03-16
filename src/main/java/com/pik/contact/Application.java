@@ -31,7 +31,7 @@ public class Application extends SpringBootServletInitializer {
     public static void main(String... args) throws IOException {
         ApplicationContext appContext = SpringApplication.run(Application.class, args);
 
-        DemoContacts demoContacts = appContext.getBean(DemoContacts.class);
-        demoContacts.createDefaultContacts();
+//        DemoContacts demoContacts = appContext.getBean(DemoContacts.class);
+//        demoContacts.createDefaultContacts();
     }
 }

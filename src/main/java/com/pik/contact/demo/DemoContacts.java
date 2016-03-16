@@ -6,13 +6,20 @@ import com.pik.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 
 @Service
 public class DemoContacts {
 
-    @Autowired
     private ContactService contactService;
 
+    @Autowired
+    public DemoContacts(ContactService contactService) {
+        this.contactService = contactService;
+    }
+
+    @PostConstruct
     public void createDefaultContacts() {
         contactService.saveContact(new Contact("David", "David Byrne", "Project Manager", "dbyrne@company.com", "123 456 7890", "dbyrne90"));
         contactService.saveContact(new Contact("John", "John Smith", "Business Analyst", "jsmith@company.com", "123 456 7891", "jsmith91"));
