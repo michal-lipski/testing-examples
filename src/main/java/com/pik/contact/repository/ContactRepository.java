@@ -26,5 +26,5 @@ public interface ContactRepository extends JpaRepository<Contact, String> {
     
     @Modifying
     @Query("delete from Contact where id in (:ids)")
-    void deleteContacts(@Param("ids") String... ids);
+    void deleteContact(@Param("ids") String... ids);
 }

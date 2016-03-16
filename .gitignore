@@ -1,6 +1,4 @@
-# Created by .gitignore support plugin (hsz.mobi)
-### Maven template
 target/
 .idea
 *.iml
-*.ipr
+node_modules/

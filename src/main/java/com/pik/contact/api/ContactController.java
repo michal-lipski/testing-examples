@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -16,14 +17,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping(value = "/rest/contacts")
 public class ContactController extends BaseController {
-    @Autowired
+
     private ContactService contactService;
 
+    @Autowired
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
-    }
-
-    public ContactController() {
     }
 
     @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
@@ -40,13 +39,15 @@ public class ContactController extends BaseController {
 
     @RequestMapping(value = "/{id}", method = PUT)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Contact updateContact(@PathVariable String id, @RequestBody @Valid Contact contact) {
+    public Contact updateContact(@PathVariable String id, @RequestBody @Valid Contact updatedContact) {
+        Contact contact = contactService.load(id);
+        contact.updateWith(updatedContact);
         return contactService.saveContact(contact);
     }
 
-    @RequestMapping(method = DELETE)
+    @RequestMapping(value = "/{id}",method = DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteContacts(@RequestParam String[] ids) {
-        contactService.deleteContacts(ids);
+    public void deleteContacts(@PathVariable String id) {
+        contactService.deleteContacts(id);
     }
 }

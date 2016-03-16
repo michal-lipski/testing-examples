@@ -16,6 +16,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.Optional;
+
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 @JsonAutoDetect(fieldVisibility = ANY)
@@ -82,18 +84,22 @@ public class Contact {
         return fullName;
     }
 
+    public void updateWith(Contact contact) {
+        Optional.ofNullable(contact.name).ifPresent(name->this.name=name);
+        Optional.ofNullable(contact.fullName).ifPresent(fullName->this.fullName=fullName);
+    }
+
     @Override
     public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
-
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
-
 }

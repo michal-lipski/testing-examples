@@ -1,22 +1,14 @@
 
 package com.pik.contact.service;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.metrics.CounterService;
-import org.springframework.boot.actuate.metrics.GaugeService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StopWatch;
 
 import com.pik.contact.domain.Contact;
 import com.pik.contact.repository.ContactRepository;
@@ -37,7 +29,7 @@ public class ContactService {
         return contactRepo.searchContacts(keyword);
     }
 
-    public Contact getContact(String id) {
+    public Contact load(String id) {
         return contactRepo.findOne(id);
     }
 
@@ -51,8 +43,8 @@ public class ContactService {
     }
 
     @Transactional
-    public void deleteContacts(String... ids) {
-        contactRepo.deleteContacts(ids);
+    public void deleteContacts(String id) {
+        contactRepo.deleteContact(id);
     }
     
     @Transactional

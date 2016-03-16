@@ -4,6 +4,7 @@ package com.pik.contact;
 import java.io.IOException;
 
 import com.pik.contact.config.Config;
+import com.pik.contact.demo.DemoContacts;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,7 +22,6 @@ import com.pik.contact.service.ContactService;
 @EnableAutoConfiguration
 @ContextConfiguration(classes = Config.class)
 @EnableTransactionManagement
-@ActiveProfiles("demo")
 public class Application extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -29,6 +29,9 @@ public class Application extends SpringBootServletInitializer {
     }
     
     public static void main(String... args) throws IOException {
-        SpringApplication.run(Application.class, args);
+        ApplicationContext appContext = SpringApplication.run(Application.class, args);
+
+        DemoContacts demoContacts = appContext.getBean(DemoContacts.class);
+        demoContacts.createDefaultContacts();
     }
 }

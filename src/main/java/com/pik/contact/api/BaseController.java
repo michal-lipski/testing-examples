@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 public class BaseController {
-    private static final Logger logger = LoggerFactory.getLogger(ContactController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
