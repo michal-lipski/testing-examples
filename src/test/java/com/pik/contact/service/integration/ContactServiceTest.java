@@ -34,7 +34,7 @@ public class ContactServiceTest {
     @Test
     public void saves_new_contact() {
         //given
-        Contact contact1 = new Contact("John", "Doe");
+        Contact contact1 = new Contact("John", "Doe", "", "", "", "");
 
         //when
         Contact contact = contactService.saveContact(contact1);
@@ -46,8 +46,8 @@ public class ContactServiceTest {
     
     @Test
     public void finds_contacts_by_query() {
-        Contact contact1 = contactService.saveContact(new Contact("John", "Doe"));
-        Contact contact2 = contactService.saveContact(new Contact("Johnny", "Smith"));
+        Contact contact1 = contactService.saveContact(new Contact("John", "Doe", "", "", "", ""));
+        Contact contact2 = contactService.saveContact(new Contact("Johnny", "Smith", "", "", "", ""));
 
         List<Contact> contacts = contactService.searchContacts("John");
 

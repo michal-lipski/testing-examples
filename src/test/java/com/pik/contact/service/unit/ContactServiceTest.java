@@ -29,7 +29,7 @@ public class ContactServiceTest {
 
     @Test
     public void stores_contact() throws Exception {
-        Contact contact = new Contact("John", "Doe");
+        Contact contact = new Contact("John", "Doe", "Developer", "jdoe@company.com", "1234567890", "jdoe90");
 
         contactService.saveContact(contact);
 
@@ -38,7 +38,7 @@ public class ContactServiceTest {
 
     @Test
     public void finds_contacts_lowercase() throws Exception {
-        Contact contact = new Contact("John", "Doe");
+        Contact contact = new Contact("John", "Doe", "Developer", "jdoe@company.com", "1234567890", "jdoe90");
         when(contactRepository.searchContacts("jo")).thenReturn(asList(contact));
 
         List<Contact> contacts = contactService.searchContacts("Jo");
@@ -48,7 +48,7 @@ public class ContactServiceTest {
 
     @Test
     public void stores_contact_with_id() throws Exception {
-        Contact contact = new Contact("John", "Doe");
+        Contact contact = new Contact("John", "Doe", "Developer", "jdoe@company.com", "1234567890", "jdoe90");
 
         contactService.saveContact(contact);
 

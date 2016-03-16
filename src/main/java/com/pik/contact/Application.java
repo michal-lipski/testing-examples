@@ -10,6 +10,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -20,6 +21,7 @@ import com.pik.contact.service.ContactService;
 @EnableAutoConfiguration
 @ContextConfiguration(classes = Config.class)
 @EnableTransactionManagement
+@ActiveProfiles("demo")
 public class Application extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -27,10 +29,6 @@ public class Application extends SpringBootServletInitializer {
     }
     
     public static void main(String... args) throws IOException {
-        ApplicationContext appContext = SpringApplication.run(Application.class, args);
-        
-        ContactService contactService = appContext.getBean(ContactService.class);
-        String filePath = (args.length > 0)? args[0] : "etc/contacts.txt";
-        contactService.loadContacts(filePath);
+        SpringApplication.run(Application.class, args);
     }
 }

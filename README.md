@@ -21,3 +21,13 @@ The application will be available on http://localhost:8080
 # TESTS
 
 * Unit
+
+
+# WEB
+
+$ npm install
+$ npm install -g karma-cli
+$ karma start config/karma.conf.js
+
+https://karma-runner.github.io/latest/intro/installation.html
+https://karma-runner.github.io/latest/intro/configuration.html

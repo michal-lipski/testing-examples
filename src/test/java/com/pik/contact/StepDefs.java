@@ -2,18 +2,15 @@ package com.pik.contact;
 
 import com.pik.contact.domain.Contact;
 import com.pik.contact.repository.ContactRepository;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.Assertions;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -37,7 +34,7 @@ public class StepDefs {
     private ResultActions mvcResult;
 
     @Autowired
-    ContactRepository contactRepository;
+    private ContactRepository contactRepository;
 
     public MockMvc getMockMvc() {
         return webAppContextSetup(wac).build();
@@ -45,7 +42,7 @@ public class StepDefs {
 
     @Given("^there is a contact with name = \"(.*?)\"$")
     public void there_is_a_contact_with_name(String name) throws Throwable {
-        Contact contact = new Contact(name, "Doe");
+        Contact contact = new Contact(name, "Doe", "Developer",null,null,null);
         contact.setId("123");
         contactRepository.save(contact);
 
@@ -86,7 +83,7 @@ public class StepDefs {
 
     @Given("^there is a contact with name = '([^\"]*)' and full name = '([^\"]*)'$")
     public void there_is_a_contact_with_name_John_and_full_name_Doe(String name, String fullName) throws Throwable {
-        Contact contact = new Contact(name, fullName);
+        Contact contact = new Contact(name, fullName, null,null,null,null);
         contact.setId("123");
         contactRepository.save(contact);
     }

@@ -31,21 +31,10 @@ public class ContactService {
     private ContactRepository contactRepo;
 
 
-    @Transactional
-    public long loadContacts(String filePath) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            return reader.lines()
-                         .map(this::parseContact)
-                         .map(this::saveContact)
-                         .count();
-        }
-    }
-
     public List<Contact> searchContacts(String keyword) {
         keyword = (keyword == null) ? "" : keyword.toLowerCase();
-        List<Contact> contacts = contactRepo.searchContacts(keyword);
 
-        return contacts;
+        return contactRepo.searchContacts(keyword);
     }
 
     public Contact getContact(String id) {
@@ -70,35 +59,5 @@ public class ContactService {
     public void deleteAllContacts() {
         contactRepo.deleteAllInBatch();
     }
-    
-    /**
-     * contactLine format: id|name|fullName|jobTitle|email|mobile|skypeId
-     */
-    private Contact parseContact(String contactLine) {
-        String[] items = contactLine.split("\\|");
-        if (items.length < 2) {
-            throw new IllegalArgumentException("Invalid contact-line format: " + contactLine);
-        }
-        
-        Contact contact = new Contact();
-        contact.setId(items[0]);
-        contact.setName(items[1]);
-        if (items.length > 2) {
-            contact.setFullName(items[2]);
-        }
-        if (items.length > 3) {
-            contact.setJobTitle(items[3]);
-        }
-        if (items.length > 4) {
-            contact.setEmail(items[4]);
-        }
-        if (items.length > 5) {
-            contact.setMobile(items[5]);
-        }
-        if (items.length > 6) {
-            contact.setSkypeId(items[6]);
-        }
-        
-        return contact;
-    }
+
 }

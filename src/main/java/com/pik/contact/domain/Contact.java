@@ -53,9 +53,13 @@ public class Contact {
     public Contact() {
     }
     
-    public Contact(String name, String fullName) {
+    public Contact(String name, String fullName, String jobTitle, String email, String mobile, String skypeId) {
         this.name = name;
         this.fullName = fullName;
+        this.jobTitle = jobTitle;
+        this.email = email;
+        this.mobile = mobile;
+        this.skypeId = skypeId;
     }
 
     public String getId() {
@@ -76,42 +80,6 @@ public class Contact {
 
     public String getFullName() {
         return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getSkypeId() {
-        return skypeId;
-    }
-
-    public void setSkypeId(String skypeId) {
-        this.skypeId = skypeId;
     }
 
     @Override
