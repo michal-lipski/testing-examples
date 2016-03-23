@@ -4,12 +4,14 @@ package com.pik.contact.demo;
 import com.pik.contact.domain.Contact;
 import com.pik.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
 
 @Service
+@Profile("demo")
 public class DemoContacts {
 
     private ContactService contactService;

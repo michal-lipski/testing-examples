@@ -4,6 +4,7 @@ import com.pik.contact.Application;
 import com.pik.contact.domain.Contact;
 import com.pik.contact.service.ContactService;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class ContactServiceTest {
     @Autowired
     private ContactService contactService;
 
-    @After
+    @Before
     public void tearDown() {
         contactService.deleteAllContacts();
     }
