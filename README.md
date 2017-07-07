@@ -32,11 +32,11 @@ Application is tested using different kids of test:
 
 [src/test/java/com/pik/contact/service/integration/ContactServiceTest.java](src/test/java/com/pik/contact/service/integration/ContactServiceTest.java)
 
-* Spring mvc test for REST endpoint
+* Spring MVC test for REST endpoint
 
 [src/test/java/com/pik/contact/api/ContactControllerTest.java](src/test/java/com/pik/contact/api/ContactControllerTest.java)
 
-* Cucumber acceptance test
+* Cucumber acceptance tests
 
 [src/test/java/com/pik/contact/cucumber/RunCukesTest.java](src/test/java/com/pik/contact/cucumber/RunCukesTest.java)
 [src/test/resources/com/pik/contact/cucumber/contacts.feature](src/test/resources/com/pik/contact/cucumber/contacts.feature)
